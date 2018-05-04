@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+
+agm-map {
+    height: 800px;
+}
+
+.selec {
+    margin-right: 70px;
+}
+
+.main {
+    margin-top: 170px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.texto {
+    margin-left: 30px;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.texto-imagen {
+    margin-left: 70px;
+}
+
+.espacio {
+    margin-top: 100px;
+}
+
+.tacometro {
+    margin-left: 30px;
+}
+
+.navbar-jony {
+    background-color: #212529 !important;
+    padding-block-start: 15px;
+}
+
+
+/** Animation **/
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}

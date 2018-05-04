@@ -1,0 +1,32 @@
+<div>
+    <div class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand texto-imagen"><img src="assets/logo-integra.png" height="70px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <p class="texto text-white"> Reportes </p>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="main card">
+    <div class="card-body">
+        <h5 class="card-title">Mapa</h5>
+        <agm-map [latitude]=" latitud " [longitude]=" longitud " [zoom]="6">
+            <!--[iconUrl]="'assets/ubicacion.png'"-->
+            <agm-marker *ngFor=" let marcador of marcadores; let i = index" backgroundColor="primary" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+                <agm-info-window>
+                    <strong> {{ marcador.titulo }} </strong>
+                    <p> {{ marcador.descripcion }} </p>
+                    <div>
+
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
+</div>

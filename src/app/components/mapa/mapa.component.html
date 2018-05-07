@@ -8,6 +8,23 @@
                         <p class="texto text-white"> Reportes </p>
                     </li>
                 </ul>
+                <span class="selec" (change)="setOpcion($event.target.value)">
+                    <h6 class="text-white"> {{ opcion }} </h6>
+                    <select class="custom-select" >
+                        <option value="todos">Todos</option>
+                        <option value="publicos">Publicos</option>
+                        <option value="privados">Privados</option>
+                        <option value="sos">SOS</option>
+                    </select>
+                </span>
+
+                <span class="selec">
+                    <button class="btn btn-light" (click)="reload()">Filtrar</button>
+                </span>
+
+                <span>
+                    <button class="btn btn-dark" (click)="logout()">Logoout</button>
+                </span>
             </div>
         </nav>
     </div>
@@ -16,14 +33,30 @@
 <div class="main card">
     <div class="card-body">
         <h5 class="card-title">Mapa</h5>
-        <agm-map [latitude]=" latitud " [longitude]=" longitud " [zoom]="6">
+        <agm-map [latitude]="latitud" [longitude]="longitud" [zoom]="6">
             <!--[iconUrl]="'assets/ubicacion.png'"-->
-            <agm-marker *ngFor=" let marcador of marcadores; let i = index" backgroundColor="primary" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+            <agm-marker *ngFor=" let publico of publicos; let i = index" [latitude]="publico.latitud" [longitude]="publico.longitud">
                 <agm-info-window>
-                    <strong> {{ marcador.titulo }} </strong>
-                    <p> {{ marcador.descripcion }} </p>
-                    <div>
-
+                    <h3> Público </h3>
+                    <div class="text-center" (click)="verImagen( publico.foto )">
+                        <img [src]="publico.foto" width="100" height="100">
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+            <agm-marker [opacity]="0.90" *ngFor=" let privado of privados; let i = index" [latitude]="privado.latitud" [longitude]="privado.longitud">
+                <agm-info-window>
+                    <h3> Privado </h3>
+                    <h5> {{ privado.tipo }} </h5>
+                    <div class="text-center" (click)="verImagen( privado.foto )">
+                        <img [src]="privado.foto" width="100" height="100">
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+            <agm-marker [opacity]="0.80" *ngFor=" let marcador of sos; let i = index" [latitude]="marcador.latitud" [longitude]="marcador.longitud">
+                <agm-info-window>
+                    <h3> SOS </h3>
+                    <div class="text-center" (click)="verImagen( marcador.foto )">
+                        <img [src]="marcador.foto" width="100" height="100">
                     </div>
                 </agm-info-window>
             </agm-marker>
